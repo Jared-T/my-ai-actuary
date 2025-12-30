@@ -1,109 +1,227 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+# AI Actuary
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+An actuarial manager agent system that automates 80-95% of actuarial workstreams while maintaining hard governance gates for professional sign-off, independence, confidentiality, and auditability.
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+## Architecture Overview
 
-## Features
+The system operates on two planes:
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Proxy
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Password-based authentication block installed via the [Supabase UI Library](https://supabase.com/ui/docs/nextjs/password-based-auth)
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+- **Control Plane (Agentic Orchestration)**: OpenAI Agents SDK decides what to do, when, and why
+- **Data/Compute Plane (Deterministic Execution)**: ETL, actuarial models, reports, dashboards, and approvals via tools and services
 
-## Demo
+```
+[Triggers/UI] ---> [Orchestrator API (Python + Agents SDK)]
+                      |  (sessions, tracing, guardrails)
+                      |
+                      +--> [Tool Gateway]
+                      |       |-- Python function tools (internal APIs)
+                      |       |-- MCP servers (internal tool bundles)
+                      |       |-- Codex MCP server (long-running tasks)
+                      |
+                      +--> [Knowledge + Retrieval]
+                      |       |-- Vector store (methods, templates, prior work)
+                      |       |-- Web search (regulatory updates, market data)
+                      |
+                      +--> [Model Execution Service]
+                      |       |-- Reserving / IFRS17 / ALM / Credit models
+                      |       |-- Job scheduler + artefact store
+                      |
+                      +--> [Document & BI Output]
+                      |       |-- Word/PDF/PPT generator
+                      |       |-- Power BI / Tableau refresh hooks
+                      |
+                      +--> [Governance]
+                              |-- approvals workflow
+                              |-- independence/confidentiality checks
+                              |-- audit trails (trace_id, artefact hashes)
+```
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+## Tech Stack
 
-## Deploy to Vercel
+### Frontend
+- **Next.js 16** with App Router
+- **Supabase** for authentication and database
+- **Tailwind CSS** with Radix UI components
+- **TypeScript**
 
-Vercel deployment will guide you through creating a Supabase account and project.
+### Backend (Python)
+- **OpenAI Agents SDK** for multi-agent orchestration
+- **FastAPI** for API endpoints
+- **Codex CLI** as MCP server for long-running tasks
+- **SQLAlchemy** for session persistence
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+## Key Concepts
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+### OpenAI Agents SDK Components
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+| Concept | Description |
+|---------|-------------|
+| **Agent** | An LLM configured with instructions, tools, guardrails, and handoffs |
+| **Runner** | Executes agents in a loop until final output is produced |
+| **Handoff** | Transfers control from one agent to another |
+| **Session** | Manages conversation history across multiple runs |
+| **Guardrail** | Safety checks for input/output validation |
+| **Tracing** | Built-in tracking for debugging and optimization |
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+### Agent Team Design
 
-## Clone and run locally
+**Top-Level: Engagement Manager Agent**
+- Intake and classify requests (monthly close, pricing, IFRS17 build, M&A due diligence)
+- Plan workflow and allocate tasks
+- Own the run state (what's done, what's blocked, what needs approval)
+- Synthesise final narrative outputs
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+**Specialist Agents:**
+1. **Data Quality and Reconciliation Agent** - ETL checks, triangle reconciliation, completeness checks
+2. **Reserving Agent** - Method selection, model runs, sensitivity analysis
+3. **IFRS17 Agent** - Model output mapping, disclosure tables, traceability
+4. **ALM and Reinsurance Agent** - Scenario tests, reinsurance optimisation
+5. **Banking and Credit Risk Agent** - ECL models, stress tests, governance documentation
+6. **Reporting and Visualisation Agent** - Memos, board decks, exhibits
+7. **PMO Agent** - Timelines, task assignment, progress reporting
+8. **Compliance and Ethics Agent** - Confidentiality, independence constraints
+9. **QA Reviewer Agent** - Second pair of eyes, consistency checks
 
-2. Create a Next.js app using the Supabase Starter template npx command
+## Governance by Design
 
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
+### Three-Layer Governance
 
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
+1. **Policy Guardrails (Blocking)**
+   - Check request is in scope
+   - Verify actor permissions for client/engagement
+   - Block expensive runs that should not start
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
+2. **Work-Product Guardrails (Output Tripwires)**
+   - Required sections exist (assumptions, limitations, reconciliation, methods, sensitivity)
+   - Every number references a model artefact or data source
+   - Disclaimers and independence wording present where required
 
-3. Use `cd` to change into the app's directory
+3. **Approval Workflow (Hard Gate)**
+   - "Approval required" metadata on artefacts
+   - Agent prepares everything, then requests approval
+   - Distribution only after approval tool returns approved
 
-   ```bash
-   cd with-supabase-app
-   ```
+## Example Workflows
 
-4. Rename `.env.example` to `.env.local` and update the following:
+### Monthly Reserving Cycle
+1. Engagement Manager creates/loads session
+2. Data Quality Agent runs validations and reconciliations
+3. If issues: PMO Agent creates tasks, blocks downstream modelling
+4. Reserving Agent selects methods, runs models, produces analysis
+5. QA Reviewer Agent checks consistency
+6. Reporting Agent assembles reserve memo
+7. Output guardrails + approval gate before distribution
 
-  ```env
-  NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=[INSERT SUPABASE PROJECT API PUBLISHABLE OR ANON KEY]
-  ```
-  > [!NOTE]
-  > This example uses `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, which refers to Supabase's new **publishable** key format.
-  > Both legacy **anon** keys and new **publishable** keys can be used with this variable name during the transition period. Supabase's dashboard may show `NEXT_PUBLIC_SUPABASE_ANON_KEY`; its value can be used in this example.
-  > See the [full announcement](https://github.com/orgs/supabase/discussions/29260) for more information.
+### IFRS 17 Quarterly Disclosure Pack
+1. Data Quality Agent validates ledger and policy data
+2. IFRS17 Agent produces CSM, RA, fulfilment cashflow tables
+3. Reporting Agent assembles disclosure tables and narrative
+4. QA Reviewer cross-checks against ledger
+5. Approval gate before external distribution
 
-  Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` can be found in [your Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true)
+### Client Advisory Request
+1. Engagement Manager classifies as scenario analysis
+2. ALM/Reinsurance Agent and Reserving Agent run modelling
+3. Reporting Agent produces board-ready summary
+4. Compliance Agent checks scope, disclaimers
 
-5. You can now run the Next.js local development server:
+## Getting Started
 
-   ```bash
-   npm run dev
-   ```
+### Prerequisites
+- Node.js 18+
+- pnpm
+- Python 3.10+
+- Supabase account
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+### Installation
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+```bash
+# Install frontend dependencies
+pnpm install
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your Supabase credentials
 
-## Feedback and issues
+# Run development server
+pnpm dev
+```
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+### Environment Variables
 
-## More Supabase examples
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+```
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+## Project Structure
+
+```
+my-ai-actuary/
+├── app/                    # Next.js App Router pages
+├── components/             # React components (Radix UI)
+├── lib/                    # Utility functions and Supabase client
+├── backend/               # Python backend (to be created)
+│   ├── agents/            # OpenAI Agents SDK agent definitions
+│   ├── tools/             # Function tools and MCP servers
+│   ├── services/          # Business logic services
+│   ├── models/            # Actuarial model wrappers
+│   └── api/               # FastAPI endpoints
+└── .claude/               # Claude Code skills (to be created)
+    └── skills/
+        ├── openai-agents-sdk/
+        ├── fastapi/
+        └── actuarial/
+```
+
+## Build Roadmap
+
+### Phase 1: One Workflow, One Client, One Line of Business
+- Monthly reserving close workflow only
+- Read-only data tools + model run submission + memo drafting
+- Tracing, sessions, and output guardrails from day one
+
+### Phase 2: Add Governance and PMO Automation
+- Approval workflow integration
+- Task generation and milestone tracking
+- QA reviewer agent with deterministic checklists
+
+### Phase 3: Expand Actuarial Domains
+- IFRS17 pack and ALM/reinsurance modules
+- Retrieval over methods library and templates
+
+### Phase 4: Scale-Out and Harden
+- MCP servers for tool bundles
+- Strong access controls and auditing
+- Regression tests and evals per workflow
+
+## Security Considerations
+
+- **Least Privilege**: Network access off by default, workspace-only writes
+- **Approval Policies**: Configurable per call (on-request, never, etc.)
+- **Shell Environment Policy**: Restrict forwarded environment variables
+- **Execution Policy Rules**: Allow/prompt/forbidden rules for command prefixes
+
+## Observability and Audit
+
+1. **OpenAI Agents SDK Trace**
+   - Records agent runs: generations, tool calls, handoffs, guardrails
+   - Trace metadata: engagement_id, period, workflow_name
+   - Configurable sensitive data capture
+
+2. **Enterprise Audit Record**
+   - Model run manifests (input hash, parameter set, code version, output hash)
+   - Approvals history (who approved, when, what artefact hash)
+   - Distribution logs (who received what, when)
+
+## License
+
+Private - All Rights Reserved
+
+## References
+
+- [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)
+- [Codex CLI](https://developers.openai.com/codex)
+- [MCP Protocol](https://modelcontextprotocol.github.io/python-sdk/)
+- [Supabase](https://supabase.com/docs)
+- [Next.js](https://nextjs.org/docs)
