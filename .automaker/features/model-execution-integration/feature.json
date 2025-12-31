@@ -1,0 +1,14 @@
+{
+  "id": "model-execution-integration",
+  "category": "Core",
+  "title": "Model Execution Integration",
+  "description": "Integrate with actuarial model execution environment via Codex CLI or direct APIs to submit and monitor model runs.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "complex",
+  "dependencies": [
+    "model-run-submission"
+  ],
+  "createdAt": "2025-12-30T18:43:20.841Z",
+  "updatedAt": "2025-12-30T18:43:20.841Z"
+}

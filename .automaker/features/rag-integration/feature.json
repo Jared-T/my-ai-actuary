@@ -1,0 +1,15 @@
+{
+  "id": "rag-integration",
+  "category": "Core",
+  "title": "RAG Integration with Agents",
+  "description": "Integrate retrieval-augmented generation with agents to provide context from knowledge base during reasoning.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "document-embedding",
+    "agent-orchestrator"
+  ],
+  "createdAt": "2025-12-30T18:43:20.844Z",
+  "updatedAt": "2025-12-30T18:43:20.844Z"
+}

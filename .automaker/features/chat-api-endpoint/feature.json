@@ -1,0 +1,16 @@
+{
+  "id": "chat-api-endpoint",
+  "category": "API",
+  "title": "Chat API Endpoint",
+  "description": "Implement primary chat endpoint that receives user messages, routes to appropriate agents, and returns responses with trace IDs.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "api-gateway",
+    "session-persistence",
+    "openai-agents-sdk-integration"
+  ],
+  "createdAt": "2025-12-30T18:43:20.836Z",
+  "updatedAt": "2025-12-30T18:43:20.836Z"
+}

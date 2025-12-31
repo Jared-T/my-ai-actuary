@@ -1,0 +1,14 @@
+{
+  "id": "mcp-server-setup",
+  "category": "Core",
+  "title": "MCP Server Infrastructure",
+  "description": "Set up Model Context Protocol server infrastructure for bundling and exposing tool sets to agents.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "openai-agents-sdk-integration"
+  ],
+  "createdAt": "2025-12-30T18:43:20.846Z",
+  "updatedAt": "2025-12-30T18:43:20.846Z"
+}

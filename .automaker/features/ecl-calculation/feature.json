@@ -1,0 +1,14 @@
+{
+  "id": "ecl-calculation",
+  "category": "Core",
+  "title": "Expected Credit Loss Calculation",
+  "description": "Implement ECL calculation engine for IFRS 9 expected credit loss modeling across different loan segments.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "complex",
+  "dependencies": [
+    "pd-lgd-ead-calculations"
+  ],
+  "createdAt": "2025-12-30T18:43:20.843Z",
+  "updatedAt": "2025-12-30T18:43:20.843Z"
+}

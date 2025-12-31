@@ -1,0 +1,14 @@
+{
+  "id": "qa-results-ui",
+  "category": "UI",
+  "title": "QA Results Display",
+  "description": "Create UI component to display QA checker results, failed checks, and recommendations for user review.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "qa-reviewer-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.846Z",
+  "updatedAt": "2025-12-30T18:43:20.846Z"
+}

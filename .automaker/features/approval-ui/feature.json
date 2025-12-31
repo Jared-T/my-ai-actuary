@@ -1,0 +1,14 @@
+{
+  "id": "approval-ui",
+  "category": "UI",
+  "title": "Approval & Sign-Off Interface",
+  "description": "Create interface for reviewers to view pending approvals, see context, make decisions, and sign off on outputs.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "approval-workflow-system"
+  ],
+  "createdAt": "2025-12-30T18:43:20.845Z",
+  "updatedAt": "2025-12-30T18:43:20.845Z"
+}

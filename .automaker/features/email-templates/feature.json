@@ -1,0 +1,14 @@
+{
+  "id": "email-templates",
+  "category": "Core",
+  "title": "Email Notification Templates",
+  "description": "Create email templates for approval notifications, completion alerts, and system messages.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "notification-system"
+  ],
+  "createdAt": "2025-12-30T18:43:20.850Z",
+  "updatedAt": "2025-12-30T18:43:20.850Z"
+}

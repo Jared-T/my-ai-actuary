@@ -1,0 +1,14 @@
+{
+  "id": "credit-risk-data-tools",
+  "category": "Core",
+  "title": "Credit Risk Data Access Tools",
+  "description": "Create tools for accessing credit portfolio data including borrowers, facilities, ratings, and loss history.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "simple",
+  "dependencies": [
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.842Z",
+  "updatedAt": "2025-12-30T18:43:20.842Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "pd-lgd-ead-calculations",
+  "category": "Core",
+  "title": "PD/LGD/EAD Calculation Engine",
+  "description": "Build calculation engine for probability of default, loss given default, and exposure at default metrics.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "complex",
+  "dependencies": [
+    "credit-risk-data-tools"
+  ],
+  "createdAt": "2025-12-30T18:43:20.843Z",
+  "updatedAt": "2025-12-30T18:43:20.843Z"
+}

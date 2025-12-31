@@ -1,0 +1,14 @@
+{
+  "id": "report-generation",
+  "category": "Core",
+  "title": "Report Generation Engine",
+  "description": "Build generic report generation engine supporting multiple output formats (PDF, Excel, HTML) with charts and tables.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "template-system"
+  ],
+  "createdAt": "2025-12-30T18:43:20.843Z",
+  "updatedAt": "2025-12-30T18:43:20.843Z"
+}

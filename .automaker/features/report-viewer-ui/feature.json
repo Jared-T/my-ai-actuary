@@ -1,0 +1,14 @@
+{
+  "id": "report-viewer-ui",
+  "category": "UI",
+  "title": "Report Viewer Component",
+  "description": "Build embedded report viewer for displaying generated actuarial reports with print and download options.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "report-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.846Z",
+  "updatedAt": "2025-12-30T18:43:20.846Z"
+}

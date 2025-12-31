@@ -1,0 +1,260 @@
+{
+  "name": "Data Quality Validation Workflow",
+  "description": "Automated data quality validation workflow for actuarial data files. Validates structure, completeness, and business rules.",
+  "workflow_type": "data_validation",
+  "metadata": {
+    "author": "Data Quality Team",
+    "version": "1.0.0",
+    "tags": ["data-quality", "validation", "automated"]
+  },
+  "inputs": {
+    "parameters": [
+      {
+        "name": "data_source",
+        "type": "string",
+        "description": "Source system identifier",
+        "required": true,
+        "validation": {
+          "enum": ["claims_system", "policy_system", "finance_system"]
+        }
+      },
+      {
+        "name": "validation_level",
+        "type": "string",
+        "description": "Level of validation to perform",
+        "required": false,
+        "default": "standard",
+        "validation": {
+          "enum": ["basic", "standard", "comprehensive"]
+        }
+      }
+    ],
+    "files": [
+      {
+        "name": "data_file",
+        "type": "file",
+        "description": "Data file to validate (CSV, Excel, or Parquet)",
+        "required": true
+      },
+      {
+        "name": "schema_file",
+        "type": "file",
+        "description": "Optional JSON schema for structure validation",
+        "required": false
+      }
+    ]
+  },
+  "outputs": {
+    "parameters": [
+      {
+        "name": "is_valid",
+        "type": "boolean",
+        "description": "Overall validation result"
+      },
+      {
+        "name": "quality_score",
+        "type": "float",
+        "description": "Data quality score (0-100)"
+      },
+      {
+        "name": "issues_count",
+        "type": "integer",
+        "description": "Total number of issues found"
+      }
+    ],
+    "artefacts": [
+      {
+        "name": "validation_report",
+        "type": "file",
+        "description": "Detailed validation report"
+      },
+      {
+        "name": "issues_log",
+        "type": "file",
+        "description": "Log of all validation issues"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "id": "load_data",
+      "name": "Load and Parse Data File",
+      "type": "tool",
+      "description": "Load the data file and determine its structure",
+      "tool": {
+        "tool_name": "load_data_file",
+        "parameters": {
+          "file_path": "{{input.data_file}}",
+          "infer_schema": true
+        }
+      },
+      "timeout": {
+        "seconds": 120,
+        "action": "fail"
+      },
+      "outputs": [
+        {
+          "name": "row_count",
+          "type": "integer",
+          "description": "Number of rows"
+        },
+        {
+          "name": "column_count",
+          "type": "integer",
+          "description": "Number of columns"
+        },
+        {
+          "name": "inferred_schema",
+          "type": "json",
+          "description": "Inferred data schema"
+        }
+      ]
+    },
+    {
+      "id": "validate_structure",
+      "name": "Validate Data Structure",
+      "type": "validation",
+      "description": "Validate the structure matches expected schema",
+      "depends_on": ["load_data"],
+      "validation": {
+        "rules": [
+          {
+            "name": "schema_match",
+            "type": "schema_validation",
+            "schema_source": "{{input.schema_file}}",
+            "fail_on_extra_columns": false
+          },
+          {
+            "name": "required_columns",
+            "type": "column_presence",
+            "columns": ["policy_id", "claim_id", "amount", "date"]
+          }
+        ],
+        "fail_on_error": true,
+        "output_field": "structure_validation"
+      },
+      "outputs": [
+        {
+          "name": "structure_valid",
+          "type": "boolean"
+        },
+        {
+          "name": "structure_issues",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "id": "validate_completeness",
+      "name": "Check Data Completeness",
+      "type": "validation",
+      "description": "Check for missing values and data coverage",
+      "depends_on": ["validate_structure"],
+      "validation": {
+        "rules": [
+          {
+            "name": "null_check",
+            "type": "null_percentage",
+            "max_null_percent": 5,
+            "columns": ["policy_id", "claim_id"]
+          },
+          {
+            "name": "date_coverage",
+            "type": "date_range",
+            "column": "date",
+            "expected_min": "{{input.valuation_date - 5 years}}",
+            "expected_max": "{{input.valuation_date}}"
+          }
+        ],
+        "fail_on_error": false,
+        "output_field": "completeness_validation"
+      },
+      "outputs": [
+        {
+          "name": "completeness_score",
+          "type": "float"
+        },
+        {
+          "name": "missing_data_summary",
+          "type": "json"
+        }
+      ]
+    },
+    {
+      "id": "validate_business_rules",
+      "name": "Apply Business Rule Validation",
+      "type": "agent",
+      "description": "Validate data against actuarial business rules",
+      "depends_on": ["validate_completeness"],
+      "agent": {
+        "agent_type": "data_quality",
+        "prompt_template": "Analyze the data from {{input.data_file}} for the following business rule violations:\n\n1. Negative amounts where not expected\n2. Future dates for historical data\n3. Duplicate records\n4. Logical inconsistencies (e.g., incurred < paid)\n5. Outlier detection (values beyond 3 standard deviations)\n\nSource system: {{input.data_source}}\nValidation level: {{input.validation_level}}"
+      },
+      "timeout": {
+        "seconds": 300,
+        "action": "notify"
+      },
+      "outputs": [
+        {
+          "name": "business_rules_passed",
+          "type": "boolean"
+        },
+        {
+          "name": "rule_violations",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "id": "calculate_quality_score",
+      "name": "Calculate Overall Quality Score",
+      "type": "transform",
+      "description": "Aggregate validation results into quality score",
+      "depends_on": [
+        "validate_structure",
+        "validate_completeness",
+        "validate_business_rules"
+      ],
+      "transform": {
+        "source": "{\n  structure: validate_structure,\n  completeness: validate_completeness,\n  business_rules: validate_business_rules\n}",
+        "transform": "weighted_score",
+        "output_field": "quality_metrics"
+      },
+      "outputs": [
+        {
+          "name": "quality_score",
+          "type": "float"
+        },
+        {
+          "name": "is_valid",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "generate_report",
+      "name": "Generate Validation Report",
+      "type": "agent",
+      "description": "Generate comprehensive validation report",
+      "depends_on": ["calculate_quality_score"],
+      "agent": {
+        "agent_type": "reporting",
+        "prompt_template": "Generate a data validation report with the following sections:\n\n1. Executive Summary\n   - Overall Quality Score: {{calculate_quality_score.quality_score}}\n   - Pass/Fail Status: {{calculate_quality_score.is_valid}}\n\n2. Structure Validation Results\n   - {{validate_structure.structure_issues}}\n\n3. Completeness Analysis\n   - Score: {{validate_completeness.completeness_score}}\n   - {{validate_completeness.missing_data_summary}}\n\n4. Business Rule Validation\n   - {{validate_business_rules.rule_violations}}\n\n5. Recommendations"
+      },
+      "outputs": [
+        {
+          "name": "report_file",
+          "type": "file"
+        }
+      ]
+    }
+  ],
+  "timeout_seconds": 3600,
+  "error_handling": "fail",
+  "retry": {
+    "policy": "immediate",
+    "max_attempts": 2,
+    "initial_delay_seconds": 5,
+    "max_delay_seconds": 30
+  }
+}

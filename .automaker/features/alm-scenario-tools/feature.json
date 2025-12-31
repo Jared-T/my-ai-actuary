@@ -1,0 +1,14 @@
+{
+  "id": "alm-scenario-tools",
+  "category": "Core",
+  "title": "ALM Scenario Definition Tools",
+  "description": "Create tools for defining ALM scenarios including interest rates, inflation, and market assumptions.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "alm-workflow"
+  ],
+  "createdAt": "2025-12-30T18:43:20.842Z",
+  "updatedAt": "2025-12-30T18:43:20.842Z"
+}

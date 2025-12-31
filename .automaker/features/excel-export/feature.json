@@ -1,0 +1,14 @@
+{
+  "id": "excel-export",
+  "category": "Core",
+  "title": "Excel Export with Formatting",
+  "description": "Implement Excel export functionality with formatting, formulas, and multiple sheets for data and analysis results.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "report-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.844Z",
+  "updatedAt": "2025-12-30T18:43:20.844Z"
+}

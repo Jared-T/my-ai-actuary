@@ -147,11 +147,27 @@ cp .env.example .env
 pnpm dev
 ```
 
+### Backend (FastAPI)
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Run backend API
+uvicorn api.main:app --reload --port 8000
+```
+
+The frontend reads the backend base URL from `NEXT_PUBLIC_API_URL`
+(defaults to `http://localhost:8000`).
+
 ### Environment Variables
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
 ## Project Structure

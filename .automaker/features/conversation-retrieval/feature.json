@@ -1,0 +1,17 @@
+{
+  "id": "conversation-retrieval",
+  "category": "API",
+  "title": "Conversation History Retrieval",
+  "description": "Build API endpoint to fetch conversation history for a session with pagination, filtering, and optional summary generation.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "message-storage",
+    "session-persistence"
+  ],
+  "createdAt": "2025-12-30T18:43:20.836Z",
+  "updatedAt": "2025-12-30T21:08:37.087Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T20:51:07.040Z"
+}

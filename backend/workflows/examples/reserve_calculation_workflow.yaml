@@ -1,0 +1,362 @@
+# Reserve Calculation Workflow
+# A multi-step actuarial process for calculating insurance reserves
+# using Chain Ladder and other methods.
+
+name: Quarterly Reserve Calculation
+description: |
+  Comprehensive reserve calculation workflow for quarterly valuation.
+  Includes data validation, multiple reserve methods, QA review, and
+  final approval before sign-off.
+
+workflow_type: reserve_calculation
+
+metadata:
+  author: Actuarial Team
+  version: "1.0.0"
+  tags:
+    - reserving
+    - quarterly
+    - claims
+
+inputs:
+  parameters:
+    - name: valuation_date
+      type: date
+      description: Date of the valuation
+      required: true
+      example: "2024-12-31"
+
+    - name: lines_of_business
+      type: array
+      description: Lines of business to include
+      required: true
+      example: ["motor", "property", "liability"]
+
+    - name: development_periods
+      type: integer
+      description: Number of development periods to use
+      required: false
+      default: 12
+      validation:
+        min: 4
+        max: 120
+
+  files:
+    - name: claims_data
+      type: file
+      description: Claims triangle data in CSV or Excel format
+      required: true
+
+    - name: exposure_data
+      type: file
+      description: Exposure data for premium earned
+      required: true
+
+outputs:
+  parameters:
+    - name: ultimate_loss
+      type: float
+      description: Estimated ultimate loss
+
+    - name: ibnr_reserve
+      type: float
+      description: IBNR reserve amount
+
+    - name: case_reserve
+      type: float
+      description: Case reserve amount
+
+    - name: total_reserve
+      type: float
+      description: Total reserve (IBNR + case)
+
+  artefacts:
+    - name: reserve_report
+      type: file
+      description: Final reserve calculation report
+
+variables:
+  confidence_level: 0.75
+  tail_factor_method: "exponential"
+
+steps:
+  - id: validate_data
+    name: Validate Input Data
+    type: agent
+    description: Validate claims and exposure data for quality and completeness
+    agent:
+      agent_type: data_quality
+      prompt_template: |
+        Validate the claims data from {{input.claims_data}} and exposure data
+        from {{input.exposure_data}} for the valuation date {{input.valuation_date}}.
+
+        Check for:
+        - Data completeness
+        - Outliers and anomalies
+        - Triangle structure validity
+        - Exposure data consistency
+    timeout:
+      seconds: 300
+      action: fail
+    outputs:
+      - name: validation_score
+        type: float
+        description: Data quality score (0-1)
+      - name: issues_found
+        type: array
+        description: List of data quality issues
+
+  - id: check_data_quality
+    name: Check Data Quality Threshold
+    type: conditional
+    description: Determine if data quality is sufficient to proceed
+    depends_on:
+      - validate_data
+    conditional:
+      branches:
+        - condition:
+            expression: "validate_data.validation_score >= 0.8"
+            description: Data quality is acceptable
+          steps:
+            - build_triangles
+        - condition:
+            expression: "validate_data.validation_score >= 0.6"
+            description: Data quality needs review
+          steps:
+            - manual_data_review
+      default_steps:
+        - data_quality_failure
+
+  - id: manual_data_review
+    name: Manual Data Review
+    type: approval
+    description: Review data quality issues before proceeding
+    approval:
+      type: conditional
+      approvers:
+        - senior_actuary
+        - data_quality_lead
+      condition:
+        expression: "validate_data.issues_found.length > 5"
+        description: More than 5 issues found
+      deadline_hours: 48
+      message: |
+        Data quality score is {{validate_data.validation_score}}.
+        Please review the identified issues and approve to proceed.
+
+  - id: data_quality_failure
+    name: Data Quality Failure
+    type: agent
+    description: Log data quality failure and generate report
+    agent:
+      agent_type: reporting
+      prompt_template: |
+        Generate a data quality failure report for the reserve calculation
+        with validation score {{validate_data.validation_score}}.
+
+        Document all issues found and recommend remediation steps.
+    error_handling: fail
+
+  - id: build_triangles
+    name: Build Claims Triangles
+    type: agent
+    description: Build development triangles from claims data
+    depends_on:
+      - check_data_quality
+    agent:
+      agent_type: reserving
+      prompt_template: |
+        Build claims development triangles from {{input.claims_data}} for
+        lines of business: {{input.lines_of_business}}.
+
+        Use {{input.development_periods}} development periods.
+        Group by: accident year/quarter, development period
+    outputs:
+      - name: paid_triangle
+        type: dataframe
+        description: Paid claims triangle
+      - name: incurred_triangle
+        type: dataframe
+        description: Incurred claims triangle
+
+  - id: calculate_reserves
+    name: Calculate Reserves Using Multiple Methods
+    type: parallel
+    description: Run multiple reserve calculation methods in parallel
+    depends_on:
+      - build_triangles
+    parallel:
+      steps:
+        - chain_ladder_calc
+        - bf_method_calc
+        - cape_cod_calc
+      wait_for_all: true
+      fail_fast: false
+
+  - id: chain_ladder_calc
+    name: Chain Ladder Calculation
+    type: agent
+    description: Calculate reserves using Chain Ladder method
+    agent:
+      agent_type: reserving
+      prompt_template: |
+        Apply Chain Ladder method to the paid triangle from {{build_triangles.paid_triangle}}
+        and incurred triangle from {{build_triangles.incurred_triangle}}.
+
+        Calculate age-to-age factors and project ultimate losses.
+        Tail factor method: {{workflow.tail_factor_method}}
+    outputs:
+      - name: cl_ultimate
+        type: float
+        description: Chain Ladder ultimate estimate
+      - name: cl_ibnr
+        type: float
+        description: Chain Ladder IBNR
+
+  - id: bf_method_calc
+    name: Bornhuetter-Ferguson Calculation
+    type: agent
+    description: Calculate reserves using Bornhuetter-Ferguson method
+    agent:
+      agent_type: reserving
+      prompt_template: |
+        Apply Bornhuetter-Ferguson method using:
+        - Triangles from {{build_triangles}}
+        - Exposure data from {{input.exposure_data}}
+
+        Use a priori loss ratios from historical data.
+    outputs:
+      - name: bf_ultimate
+        type: float
+        description: B-F ultimate estimate
+      - name: bf_ibnr
+        type: float
+        description: B-F IBNR
+
+  - id: cape_cod_calc
+    name: Cape Cod Calculation
+    type: agent
+    description: Calculate reserves using Cape Cod method
+    agent:
+      agent_type: reserving
+      prompt_template: |
+        Apply Cape Cod method using:
+        - Triangles from {{build_triangles}}
+        - Exposure data from {{input.exposure_data}}
+
+        This is a blend of Chain Ladder and B-F approaches.
+    outputs:
+      - name: cc_ultimate
+        type: float
+        description: Cape Cod ultimate estimate
+      - name: cc_ibnr
+        type: float
+        description: Cape Cod IBNR
+
+  - id: aggregate_results
+    name: Aggregate Reserve Estimates
+    type: transform
+    description: Aggregate results from different methods and select final estimate
+    depends_on:
+      - calculate_reserves
+    transform:
+      source: |
+        {
+          chain_ladder: chain_ladder_calc,
+          bornhuetter_ferguson: bf_method_calc,
+          cape_cod: cape_cod_calc
+        }
+      transform: weighted_average
+      output_field: selected_reserve
+    outputs:
+      - name: ultimate_loss
+        type: float
+      - name: ibnr_reserve
+        type: float
+      - name: reserve_range_low
+        type: float
+      - name: reserve_range_high
+        type: float
+
+  - id: qa_review
+    name: QA Review
+    type: agent
+    description: Perform quality assurance review of reserve calculations
+    depends_on:
+      - aggregate_results
+    agent:
+      agent_type: qa_reviewer
+      prompt_template: |
+        Review the reserve calculation results:
+        - Ultimate Loss: {{aggregate_results.ultimate_loss}}
+        - IBNR Reserve: {{aggregate_results.ibnr_reserve}}
+        - Range: {{aggregate_results.reserve_range_low}} to {{aggregate_results.reserve_range_high}}
+
+        Compare with prior period and identify any unusual movements.
+        Check methodology consistency and assumption reasonableness.
+    outputs:
+      - name: qa_passed
+        type: boolean
+      - name: qa_comments
+        type: string
+
+  - id: final_approval
+    name: Final Approval
+    type: approval
+    description: Senior actuary approval before finalizing reserves
+    depends_on:
+      - qa_review
+    condition:
+      expression: "qa_review.qa_passed == true"
+      description: QA review must pass
+    approval:
+      type: required
+      approvers:
+        - chief_actuary
+        - signing_actuary
+      deadline_hours: 72
+      message: |
+        Reserve calculation complete for valuation date {{input.valuation_date}}.
+
+        Ultimate Loss: {{aggregate_results.ultimate_loss}}
+        IBNR Reserve: {{aggregate_results.ibnr_reserve}}
+
+        QA Comments: {{qa_review.qa_comments}}
+
+        Please review and approve.
+
+  - id: generate_report
+    name: Generate Reserve Report
+    type: agent
+    description: Generate the final reserve calculation report
+    depends_on:
+      - final_approval
+    agent:
+      agent_type: reporting
+      prompt_template: |
+        Generate a comprehensive reserve calculation report including:
+
+        1. Executive Summary
+        2. Data Summary
+        3. Methodology Description
+        4. Results by Line of Business
+        5. Comparison with Prior Period
+        6. Sensitivity Analysis
+        7. Appendices
+
+        Valuation Date: {{input.valuation_date}}
+        Final IBNR: {{aggregate_results.ibnr_reserve}}
+    outputs:
+      - name: report_file
+        type: file
+        description: PDF report file
+
+timeout_seconds: 86400  # 24 hours
+
+error_handling: fail
+
+retry:
+  policy: exponential_backoff
+  max_attempts: 3
+  initial_delay_seconds: 60
+  max_delay_seconds: 600

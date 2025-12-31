@@ -1,0 +1,16 @@
+{
+  "id": "project-management",
+  "category": "Database",
+  "title": "Project Management Data Model",
+  "description": "Define database schema for projects, including metadata, timestamps, ownership, and project-level settings.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "sqlalchemy-models"
+  ],
+  "createdAt": "2025-12-30T18:43:20.838Z",
+  "updatedAt": "2025-12-30T20:00:09.983Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T19:42:18.770Z"
+}

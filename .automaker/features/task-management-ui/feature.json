@@ -1,0 +1,14 @@
+{
+  "id": "task-management-ui",
+  "category": "UI",
+  "title": "Task Management Interface",
+  "description": "Build task list UI with status tracking, assignment, due dates, and filtering for PMO automation.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "task-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.845Z",
+  "updatedAt": "2025-12-30T18:43:20.845Z"
+}

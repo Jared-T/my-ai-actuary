@@ -1,0 +1,15 @@
+{
+  "id": "approval-workflow-system",
+  "category": "Core",
+  "title": "Approval Workflow System",
+  "description": "Implement third layer of governance with configurable approval workflows that require professional sign-off on major outputs.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "complex",
+  "dependencies": [
+    "policy-guardrails",
+    "work-product-guardrails"
+  ],
+  "createdAt": "2025-12-30T18:43:20.839Z",
+  "updatedAt": "2025-12-30T18:43:20.839Z"
+}

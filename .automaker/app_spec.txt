@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project_specification>
+  <project_name>AI Actuary</project_name>
+
+  <overview>
+    AI Actuary is an autonomous AI-powered actuarial management system designed to automate 80-95% of actuarial workstreams while maintaining hard governance gates for professional sign-off, independence, confidentiality, and auditability. The system operates on a dual-plane architecture with an agentic orchestration control plane powered by OpenAI Agents SDK and a deterministic execution data/compute plane handling ETL, actuarial models, reports, dashboards, and approvals. The platform serves as a personal AI actuary assistant that enables users in South Africa to interact with complex actuarial tasks and projects through a simple, chat-like interface. The system is designed to support specialized actuarial domains including reserving, IFRS 17, ALM/reinsurance, banking/credit risk, and comprehensive governance and compliance workflows.
+  </overview>
+
+  <technology_stack>
+    <technology>Next.js 16</technology>
+    <technology>React 19</technology>
+    <technology>TypeScript 5</technology>
+    <technology>Tailwind CSS 3.4</technology>
+    <technology>Radix UI</technology>
+    <technology>Shadcn UI</technology>
+    <technology>Lucide Icons</technology>
+    <technology>Next.js Themes</technology>
+    <technology>Supabase (Authentication &amp; Database)</technology>
+    <technology>@supabase/supabase-js</technology>
+    <technology>@supabase/ssr</technology>
+    <technology>OpenAI Agents SDK</technology>
+    <technology>FastAPI (Backend)</technology>
+    <technology>Python 3.10+</technology>
+    <technology>SQLAlchemy</technology>
+    <technology>Codex CLI</technology>
+    <technology>Model Context Protocol (MCP)</technology>
+    <technology>PostCSS</technology>
+    <technology>ESLint</technology>
+    <technology>Node.js 18+</technology>
+    <technology>pnpm</technology>
+  </technology_stack>
+
+  <core_capabilities>
+    <capability>Dual-plane architecture with agentic orchestration and deterministic execution</capability>
+    <capability>Multi-agent orchestration for specialized actuarial domains</capability>
+    <capability>Monthly reserving close workflow automation</capability>
+    <capability>IFRS 17 disclosure pack generation</capability>
+    <capability>ALM and reinsurance scenario analysis</capability>
+    <capability>Banking and credit risk modeling</capability>
+    <capability>Data quality and reconciliation checks</capability>
+    <capability>Report and visualization generation</capability>
+    <capability>Approval workflow integration</capability>
+    <capability>Project management and timeline tracking</capability>
+    <capability>Compliance and ethics enforcement</capability>
+    <capability>QA reviewer agent with consistency checks</capability>
+    <capability>Supabase-based authentication and authorization</capability>
+    <capability>Session-based conversation history</capability>
+    <capability>Comprehensive audit trails with trace IDs and artifact hashing</capability>
+    <capability>Three-layer governance system (policy guardrails, work-product guardrails, approval workflows)</capability>
+    <capability>Built-in observability and tracing</capability>
+    <capability>MCP server integration for tool bundling</capability>
+    <capability>Long-running task execution via Codex CLI</capability>
+  </core_capabilities>
+
+  <implemented_features>
+    <feature>
+      <name>Supabase Authentication</name>
+      <description>Complete user authentication system with login, sign-up, password reset, and password update flows. Supports email verification and session management.</description>
+      <file_locations>
+        <location>/app/auth/login/page.tsx</location>
+        <location>/app/auth/sign-up/page.tsx</location>
+        <location>/app/auth/update-password/page.tsx</location>
+        <location>/app/auth/forgot-password/page.tsx</location>
+        <location>/lib/supabase/client.ts</location>
+        <location>/lib/supabase/server.ts</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>Protected Routes</name>
+      <description>Authenticated pages and layouts that require user login to access sensitive information. Protected routes redirect to login if user is not authenticated.</description>
+      <file_locations>
+        <location>/app/protected/layout.tsx</location>
+        <location>/app/protected/page.tsx</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>UI Component Library</name>
+      <description>Comprehensive Radix UI based component library with Tailwind CSS styling. Includes buttons, cards, labels, badges, checkboxes, dropdown menus, input fields, and tutorial components.</description>
+      <file_locations>
+        <location>/components/ui/*</location>
+        <location>/components/hero.tsx</location>
+        <location>/components/theme-switcher.tsx</location>
+        <location>/components/login-form.tsx</location>
+        <location>/components/sign-up-form.tsx</location>
+        <location>/components/logout-button.tsx</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>Theme Switching</name>
+      <description>Dark/light mode theme support using next-themes with persistent user preference storage.</description>
+      <file_locations>
+        <location>/components/theme-switcher.tsx</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>Responsive Layout</name>
+      <description>Mobile-responsive layout with navigation, footer, and responsive grid system using Tailwind CSS and Next.js App Router.</description>
+      <file_locations>
+        <location>/app/layout.tsx</location>
+        <location>/app/page.tsx</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>Tutorial Components</name>
+      <description>Step-by-step tutorial components for connecting Supabase, signing up users, and fetching data from the database.</description>
+      <file_locations>
+        <location>/components/tutorial/connect-supabase-steps.tsx</location>
+        <location>/components/tutorial/sign-up-user-steps.tsx</location>
+        <location>/components/tutorial/fetch-data-steps.tsx</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>Environment Configuration</name>
+      <description>Environment variable validation and warnings for missing Supabase configuration. Includes env.example for setup instructions.</description>
+      <file_locations>
+        <location>/components/env-var-warning.tsx</location>
+        <location>/.env.example</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>Supabase Client Utilities</name>
+      <description>Utility functions for creating Supabase clients for browser (client-side) and server-side authentication contexts.</description>
+      <file_locations>
+        <location>/lib/supabase/client.ts</location>
+        <location>/lib/supabase/server.ts</location>
+        <location>/lib/supabase/proxy.ts</location>
+      </file_locations>
+    </feature>
+  </implemented_features>
+
+  <additional_requirements>
+    <requirement>Node.js 18 or higher required</requirement>
+    <requirement>pnpm package manager for dependency management</requirement>
+    <requirement>Python 3.10+ for backend services</requirement>
+    <requirement>Supabase account and project setup required</requirement>
+    <requirement>Environment variables must be configured: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</requirement>
+    <requirement>OpenAI API access for Agents SDK</requirement>
+    <requirement>MCP server infrastructure for tool bundles</requirement>
+    <requirement>PostgreSQL database (via Supabase)</requirement>
+    <requirement>Access to actuarial model execution environment</requirement>
+    <requirement>High governance and audit requirements for South African actuarial standards</requirement>
+    <requirement>Professional sign-off gates for all major outputs</requirement>
+    <requirement>Confidentiality and independence controls for multi-client engagements</requirement>
+  </additional_requirements>
+
+  <development_guidelines>
+    <guideline>Use TypeScript for all frontend code with strict mode enabled</guideline>
+    <guideline>Follow Next.js App Router conventions for page organization</guideline>
+    <guideline>Use Radix UI + Tailwind CSS for all UI components</guideline>
+    <guideline>Implement server components where possible for performance</guideline>
+    <guideline>Use Supabase for all authentication and database operations</guideline>
+    <guideline>Follow ESLint configuration for code quality</guideline>
+    <guideline>Use pnpm for consistent dependency management</guideline>
+    <guideline>Structure backend in Python using FastAPI and OpenAI Agents SDK</guideline>
+    <guideline>Maintain clear separation between control plane (agents) and data plane (execution)</guideline>
+    <guideline>Implement guardrails at three layers: policy, work-product, and approval</guideline>
+    <guideline>Use MCP protocol for tool bundling and integration</guideline>
+    <guideline>Include comprehensive audit trails with trace IDs on all operations</guideline>
+    <guideline>Build with least-privilege security model</guideline>
+    <guideline>Implement approval policies as configurable per-call rules</guideline>
+    <guideline>Test all actuarial workflows with regression tests</guideline>
+    <guideline>Document all agents with clear instructions and handoff criteria</guideline>
+    <guideline>Use session persistence for conversation continuity</guideline>
+    <guideline>Monitor and optimize agent performance using built-in tracing</guideline>
+  </development_guidelines>
+
+  <implementation_roadmap>
+    <phase>
+      <name>Phase 1: Foundation &amp; Core Workflow</name>
+      <status>in_progress</status>
+      <description>Establish the frontend foundation with authentication, protected routes, and UI components. Implement single workflow (monthly reserving close) with read-only data tools, model run submission, and memo drafting. Focus on tracing, sessions, and output guardrails from day one.</description>
+    </phase>
+    <phase>
+      <name>Phase 2: Governance &amp; PMO Automation</name>
+      <status>pending</status>
+      <description>Integrate approval workflow system, implement task generation and milestone tracking, develop QA reviewer agent with deterministic checklists, and build out approval gate mechanisms for all major outputs.</description>
+    </phase>
+    <phase>
+      <name>Phase 3: Expand Actuarial Domains</name>
+      <status>pending</status>
+      <description>Add IFRS17 disclosure pack generation module, implement ALM/reinsurance analysis tools, build knowledge retrieval system over methods library and templates, and extend data quality agent capabilities.</description>
+    </phase>
+    <phase>
+      <name>Phase 4: Scale-Out &amp; Harden</name>
+      <status>pending</status>
+      <description>Deploy MCP servers for tool bundles, implement strong access controls and auditing, build regression tests and evaluations per workflow, optimize agent performance, and prepare for multi-client/multi-engagement scaling.</description>
+    </phase>
+  </implementation_roadmap>
+</project_specification>

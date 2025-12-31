@@ -1,0 +1,14 @@
+{
+  "id": "reserving-data-tools",
+  "category": "Core",
+  "title": "Reserving Data Tools",
+  "description": "Create read-only data access tools for reserving workflow including claims data, premium data, and historical reserves.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.840Z",
+  "updatedAt": "2025-12-30T18:43:20.840Z"
+}

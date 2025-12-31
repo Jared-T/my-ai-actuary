@@ -1,0 +1,15 @@
+{
+  "id": "project-api",
+  "category": "API",
+  "title": "Project Management API",
+  "description": "Implement REST API for project CRUD operations, enabling users to create, read, update, and delete projects with proper authorization.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "project-management",
+    "api-gateway"
+  ],
+  "createdAt": "2025-12-30T18:43:20.838Z",
+  "updatedAt": "2025-12-30T18:43:20.838Z"
+}

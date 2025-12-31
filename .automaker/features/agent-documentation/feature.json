@@ -1,0 +1,16 @@
+{
+  "id": "agent-documentation",
+  "category": "Documentation",
+  "title": "Agent Documentation",
+  "description": "Document all agents with clear instructions, capabilities, limitations, and handoff criteria for transparency.",
+  "status": "in_progress",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "agent-orchestrator"
+  ],
+  "createdAt": "2025-12-30T18:43:20.848Z",
+  "updatedAt": "2025-12-31T09:39:57.376Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T21:14:45.495Z"
+}

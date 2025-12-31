@@ -1,0 +1,14 @@
+{
+  "id": "disaster-recovery-testing",
+  "category": "Testing",
+  "title": "Disaster Recovery Testing",
+  "description": "Develop and execute disaster recovery tests to validate backup and recovery procedures.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "moderate",
+  "dependencies": [
+    "backup-recovery"
+  ],
+  "createdAt": "2025-12-30T18:43:20.852Z",
+  "updatedAt": "2025-12-30T18:43:20.852Z"
+}

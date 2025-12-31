@@ -1,0 +1,16 @@
+{
+  "id": "knowledge-base-setup",
+  "category": "Core",
+  "title": "Knowledge Base Infrastructure",
+  "description": "Set up vector database and retrieval system for actuarial methods library, templates, and precedents.",
+  "status": "verified",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "backend-fastapi-setup"
+  ],
+  "createdAt": "2025-12-30T18:43:20.844Z",
+  "updatedAt": "2025-12-30T20:42:25.744Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T20:11:39.141Z"
+}

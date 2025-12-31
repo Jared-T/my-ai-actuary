@@ -1,0 +1,15 @@
+{
+  "id": "modeling-tools-mcp-bundle",
+  "category": "Core",
+  "title": "Modeling Tools MCP Bundle",
+  "description": "Create MCP bundle for actuarial modeling tools including model submission, execution, and output processing.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "mcp-server-setup",
+    "model-execution-integration"
+  ],
+  "createdAt": "2025-12-30T18:43:20.847Z",
+  "updatedAt": "2025-12-30T18:43:20.847Z"
+}

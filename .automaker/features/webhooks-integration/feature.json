@@ -1,0 +1,14 @@
+{
+  "id": "webhooks-integration",
+  "category": "API",
+  "title": "Webhooks for External Systems",
+  "description": "Implement webhooks to notify external systems of completed workflows, approvals, and milestone achievements.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "moderate",
+  "dependencies": [
+    "api-gateway"
+  ],
+  "createdAt": "2025-12-30T18:43:20.851Z",
+  "updatedAt": "2025-12-30T18:43:20.851Z"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "sqlalchemy-models",
+  "category": "Database",
+  "title": "SQLAlchemy ORM Models",
+  "description": "Create SQLAlchemy models for all backend entities including users, sessions, projects, workflows, and audit records. Define relationships and constraints.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "backend-database-schema"
+  ],
+  "createdAt": "2025-12-30T18:43:20.835Z",
+  "updatedAt": "2025-12-30T19:42:15.828Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T19:33:28.151Z"
+}

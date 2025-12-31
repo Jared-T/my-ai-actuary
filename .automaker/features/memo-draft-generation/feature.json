@@ -1,0 +1,15 @@
+{
+  "id": "memo-draft-generation",
+  "category": "Core",
+  "title": "Actuarial Memo Drafting Agent",
+  "description": "Create agent that drafts actuarial memos summarizing analysis, findings, and recommendations based on model outputs and analysis.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "complex",
+  "dependencies": [
+    "reserving-workflow",
+    "model-output-processing"
+  ],
+  "createdAt": "2025-12-30T18:43:20.841Z",
+  "updatedAt": "2025-12-30T18:43:20.841Z"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "agent-orchestrator",
+  "category": "Core",
+  "title": "Agent Orchestrator",
+  "description": "Build orchestration layer that routes messages to appropriate agents based on intent, manages agent lifecycle, and handles agent handoffs.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "complex",
+  "dependencies": [
+    "openai-agents-sdk-integration",
+    "tracing-infrastructure"
+  ],
+  "createdAt": "2025-12-30T18:43:20.837Z",
+  "updatedAt": "2025-12-30T20:56:35.043Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T20:30:00.579Z"
+}

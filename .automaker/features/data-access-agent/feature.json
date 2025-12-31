@@ -1,0 +1,17 @@
+{
+  "id": "data-access-agent",
+  "category": "Core",
+  "title": "Data Access Agent",
+  "description": "Create read-only data access agent that can query actuarial data, explain schemas, and provide data context to other agents.",
+  "status": "in_progress",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "agent-orchestrator",
+    "sqlalchemy-models"
+  ],
+  "createdAt": "2025-12-30T18:43:20.837Z",
+  "updatedAt": "2025-12-31T09:40:06.037Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T21:14:42.205Z"
+}

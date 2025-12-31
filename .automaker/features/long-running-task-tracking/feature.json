@@ -1,0 +1,15 @@
+{
+  "id": "long-running-task-tracking",
+  "category": "Core",
+  "title": "Long-Running Task Tracking",
+  "description": "Implement background task tracking system with status updates, progress reporting, and result delivery.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "codex-cli-integration",
+    "session-persistence"
+  ],
+  "createdAt": "2025-12-30T18:43:20.847Z",
+  "updatedAt": "2025-12-30T18:43:20.847Z"
+}

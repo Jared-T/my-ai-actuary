@@ -1,0 +1,14 @@
+{
+  "id": "federated-search",
+  "category": "Core",
+  "title": "Federated Search System",
+  "description": "Build search system that searches across documents, conversations, data, and project artifacts.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "moderate",
+  "dependencies": [
+    "knowledge-base-setup"
+  ],
+  "createdAt": "2025-12-30T18:43:20.851Z",
+  "updatedAt": "2025-12-30T18:43:20.851Z"
+}

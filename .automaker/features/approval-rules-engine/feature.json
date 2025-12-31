@@ -1,0 +1,14 @@
+{
+  "id": "approval-rules-engine",
+  "category": "Core",
+  "title": "Approval Rules Engine",
+  "description": "Build rule engine to determine which outputs require approval based on type, amount, risk level, and user role.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "approval-workflow-system"
+  ],
+  "createdAt": "2025-12-30T18:43:20.840Z",
+  "updatedAt": "2025-12-30T18:43:20.840Z"
+}

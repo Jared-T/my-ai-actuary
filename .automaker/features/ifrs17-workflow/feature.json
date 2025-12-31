@@ -1,0 +1,15 @@
+{
+  "id": "ifrs17-workflow",
+  "category": "Workflow",
+  "title": "IFRS 17 Disclosure Pack Workflow",
+  "description": "Implement IFRS 17 disclosure pack generation workflow with data extraction, calculation, and document assembly.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "complex",
+  "dependencies": [
+    "workflow-engine",
+    "template-system"
+  ],
+  "createdAt": "2025-12-30T18:43:20.841Z",
+  "updatedAt": "2025-12-30T18:43:20.841Z"
+}

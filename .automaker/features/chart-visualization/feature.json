@@ -1,0 +1,14 @@
+{
+  "id": "chart-visualization",
+  "category": "Core",
+  "title": "Chart & Visualization Generation",
+  "description": "Implement chart generation capabilities including time series, scatter plots, and comparison charts for reports.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "report-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.843Z",
+  "updatedAt": "2025-12-30T18:43:20.843Z"
+}

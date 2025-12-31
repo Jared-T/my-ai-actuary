@@ -1,0 +1,14 @@
+{
+  "id": "supabase-row-level-security",
+  "category": "Authentication",
+  "title": "Supabase Row-Level Security",
+  "description": "Configure PostgreSQL RLS policies in Supabase to enforce data access controls at the database level.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "role-based-access-control"
+  ],
+  "createdAt": "2025-12-30T18:43:20.848Z",
+  "updatedAt": "2025-12-30T18:43:20.848Z"
+}

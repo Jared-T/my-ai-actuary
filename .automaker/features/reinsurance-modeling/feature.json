@@ -1,0 +1,14 @@
+{
+  "id": "reinsurance-modeling",
+  "category": "Core",
+  "title": "Reinsurance Modeling Tools",
+  "description": "Build tools for modeling reinsurance programs including coverage limits, layers, and profit commissions.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "alm-workflow"
+  ],
+  "createdAt": "2025-12-30T18:43:20.842Z",
+  "updatedAt": "2025-12-30T18:43:20.842Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "pdf-generation",
+  "category": "Core",
+  "title": "PDF Document Generation",
+  "description": "Build PDF generation from templates with proper formatting, images, and multi-page support for actuarial documents.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "report-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.843Z",
+  "updatedAt": "2025-12-30T18:43:20.843Z"
+}

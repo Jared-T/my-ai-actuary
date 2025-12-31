@@ -1,0 +1,15 @@
+{
+  "id": "scenario-aggregation",
+  "category": "Core",
+  "title": "Multi-Scenario Aggregation",
+  "description": "Implement aggregation logic for comparing and analyzing results across multiple ALM/reinsurance scenarios.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "alm-scenario-tools",
+    "reinsurance-modeling"
+  ],
+  "createdAt": "2025-12-30T18:43:20.842Z",
+  "updatedAt": "2025-12-30T18:43:20.842Z"
+}

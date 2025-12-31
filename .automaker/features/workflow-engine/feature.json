@@ -1,0 +1,15 @@
+{
+  "id": "workflow-engine",
+  "category": "Core",
+  "title": "Workflow Execution Engine",
+  "description": "Build workflow engine that orchestrates multi-step workflows, manages state, handles errors, and tracks progress.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "complex",
+  "dependencies": [
+    "workflow-definition",
+    "agent-orchestrator"
+  ],
+  "createdAt": "2025-12-30T18:43:20.839Z",
+  "updatedAt": "2025-12-30T18:43:20.839Z"
+}

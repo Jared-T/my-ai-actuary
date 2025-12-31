@@ -1,0 +1,14 @@
+{
+  "id": "backend-database-schema",
+  "category": "Database",
+  "title": "Backend Database Schema",
+  "description": "Design and implement PostgreSQL schema for storing sessions, audit trails, projects, and actuarial data. Use SQLAlchemy ORM for database abstraction.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [],
+  "createdAt": "2025-12-30T18:43:20.835Z",
+  "updatedAt": "2025-12-30T19:29:09.355Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T18:55:42.241Z"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "data-tools-mcp-bundle",
+  "category": "Core",
+  "title": "Data Access Tools MCP Bundle",
+  "description": "Create MCP bundle exposing all data access tools with proper schemas and documentation for agent use.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "mcp-server-setup",
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.846Z",
+  "updatedAt": "2025-12-30T18:43:20.846Z"
+}

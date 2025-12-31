@@ -1,0 +1,16 @@
+{
+  "id": "workflow-definition",
+  "category": "Core",
+  "title": "Workflow Definition System",
+  "description": "Create workflow definition format (YAML/JSON) to describe multi-step actuarial processes including inputs, agents, and outputs.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "project-management"
+  ],
+  "createdAt": "2025-12-30T18:43:20.839Z",
+  "updatedAt": "2025-12-30T20:31:53.754Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T20:00:11.607Z"
+}

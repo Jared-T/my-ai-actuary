@@ -1,0 +1,14 @@
+{
+  "id": "document-embedding",
+  "category": "Core",
+  "title": "Document Embedding & Indexing",
+  "description": "Build document processing pipeline to embed methods documents and templates for semantic search and retrieval.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "knowledge-base-setup"
+  ],
+  "createdAt": "2025-12-30T18:43:20.844Z",
+  "updatedAt": "2025-12-30T18:43:20.844Z"
+}

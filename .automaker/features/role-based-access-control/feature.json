@@ -1,0 +1,16 @@
+{
+  "id": "role-based-access-control",
+  "category": "Authentication",
+  "title": "Role-Based Access Control",
+  "description": "Implement RBAC system with roles (admin, manager, analyst, reviewer) and permission checking throughout application.",
+  "status": "in_progress",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "user-context-extraction"
+  ],
+  "createdAt": "2025-12-30T18:43:20.847Z",
+  "updatedAt": "2025-12-31T09:40:10.670Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T21:14:44.115Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "regression-testing-framework",
+  "category": "Testing",
+  "title": "Regression Testing Framework",
+  "description": "Build regression testing framework for validating actuarial workflows produce correct results on known scenarios.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "workflow-engine"
+  ],
+  "createdAt": "2025-12-30T18:43:20.849Z",
+  "updatedAt": "2025-12-30T18:43:20.849Z"
+}

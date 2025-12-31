@@ -1,0 +1,16 @@
+{
+  "id": "user-context-extraction",
+  "category": "Authentication",
+  "title": "User Context Extraction",
+  "description": "Build dependency injection system to extract and provide user context throughout the request lifecycle for proper authorization.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "jwt-token-validation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.835Z",
+  "updatedAt": "2025-12-30T21:00:58.363Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T20:32:19.400Z"
+}

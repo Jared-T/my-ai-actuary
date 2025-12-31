@@ -1,0 +1,14 @@
+{
+  "id": "analytics-dashboard",
+  "category": "UI",
+  "title": "Analytics Dashboard",
+  "description": "Create dashboard showing usage analytics, workflow completion rates, and system performance metrics.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "moderate",
+  "dependencies": [
+    "analytics-tracking"
+  ],
+  "createdAt": "2025-12-30T18:43:20.850Z",
+  "updatedAt": "2025-12-30T18:43:20.850Z"
+}

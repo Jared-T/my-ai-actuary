@@ -1,0 +1,15 @@
+{
+  "id": "frontend-chat-integration",
+  "category": "Frontend",
+  "title": "Frontend Chat API Integration",
+  "description": "Connect chat UI to backend API, implement message sending, response handling, and error display.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "frontend-chat-interface",
+    "chat-api-endpoint"
+  ],
+  "createdAt": "2025-12-30T18:43:20.844Z",
+  "updatedAt": "2025-12-30T18:43:20.844Z"
+}

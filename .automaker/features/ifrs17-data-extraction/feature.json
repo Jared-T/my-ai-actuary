@@ -1,0 +1,14 @@
+{
+  "id": "ifrs17-data-extraction",
+  "category": "Core",
+  "title": "IFRS 17 Data Extraction Tools",
+  "description": "Create tools to extract relevant actuarial and financial data required for IFRS 17 disclosure pack generation.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.841Z",
+  "updatedAt": "2025-12-30T18:43:20.841Z"
+}

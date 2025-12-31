@@ -1,0 +1,14 @@
+{
+  "id": "intent-classifier",
+  "category": "Core",
+  "title": "Intent Classification System",
+  "description": "Implement intent classification to determine which agent should handle incoming messages. Support routing to domain-specific agents.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "agent-orchestrator"
+  ],
+  "createdAt": "2025-12-30T18:43:20.837Z",
+  "updatedAt": "2025-12-30T18:43:20.837Z"
+}

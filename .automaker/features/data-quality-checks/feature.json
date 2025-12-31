@@ -1,0 +1,14 @@
+{
+  "id": "data-quality-checks",
+  "category": "Core",
+  "title": "Data Quality Validation Agent",
+  "description": "Build data quality agent that performs reconciliation checks, validates data consistency, and flags anomalies for user review.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.838Z",
+  "updatedAt": "2025-12-30T18:43:20.838Z"
+}

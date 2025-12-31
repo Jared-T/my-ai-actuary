@@ -1,0 +1,14 @@
+{
+  "id": "analytics-tracking",
+  "category": "Core",
+  "title": "Analytics & Usage Tracking",
+  "description": "Implement analytics tracking for user actions, workflow usage, and system performance insights.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "moderate",
+  "dependencies": [
+    "tracing-infrastructure"
+  ],
+  "createdAt": "2025-12-30T18:43:20.850Z",
+  "updatedAt": "2025-12-30T18:43:20.850Z"
+}

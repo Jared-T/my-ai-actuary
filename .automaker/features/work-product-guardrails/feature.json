@@ -1,0 +1,16 @@
+{
+  "id": "work-product-guardrails",
+  "category": "Core",
+  "title": "Work-Product Guardrails",
+  "description": "Build second layer of governance with output validation guardrails that check generated content for quality and compliance.",
+  "status": "in_progress",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "agent-orchestrator"
+  ],
+  "createdAt": "2025-12-30T18:43:20.839Z",
+  "updatedAt": "2025-12-30T21:14:45.118Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T21:14:44.885Z"
+}

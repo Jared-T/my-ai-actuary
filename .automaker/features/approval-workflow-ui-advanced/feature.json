@@ -1,0 +1,15 @@
+{
+  "id": "approval-workflow-ui-advanced",
+  "category": "UI",
+  "title": "Advanced Approval Workflow Interface",
+  "description": "Build sophisticated approval interface with multi-level approvals, delegation, comments, and revision tracking.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "complex",
+  "dependencies": [
+    "approval-ui",
+    "approval-rules-engine"
+  ],
+  "createdAt": "2025-12-30T18:43:20.849Z",
+  "updatedAt": "2025-12-30T18:43:20.849Z"
+}

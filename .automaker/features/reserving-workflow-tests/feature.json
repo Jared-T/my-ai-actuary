@@ -1,0 +1,15 @@
+{
+  "id": "reserving-workflow-tests",
+  "category": "Testing",
+  "title": "Reserving Workflow Tests",
+  "description": "Implement comprehensive regression tests for monthly reserving close workflow with multiple scenarios.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "regression-testing-framework",
+    "reserving-workflow"
+  ],
+  "createdAt": "2025-12-30T18:43:20.849Z",
+  "updatedAt": "2025-12-30T18:43:20.849Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "banking-credit-risk-workflow",
+  "category": "Workflow",
+  "title": "Banking & Credit Risk Workflow",
+  "description": "Implement banking and credit risk assessment workflow including PD, LGD, EAD calculations and credit portfolio analysis.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "complex",
+  "dependencies": [
+    "workflow-engine"
+  ],
+  "createdAt": "2025-12-30T18:43:20.842Z",
+  "updatedAt": "2025-12-30T18:43:20.842Z"
+}

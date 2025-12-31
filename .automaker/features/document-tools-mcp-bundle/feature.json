@@ -1,0 +1,15 @@
+{
+  "id": "document-tools-mcp-bundle",
+  "category": "Core",
+  "title": "Document Generation Tools MCP Bundle",
+  "description": "Create MCP bundle for document generation tools including templates, formatting, and report generation.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "mcp-server-setup",
+    "report-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.847Z",
+  "updatedAt": "2025-12-30T18:43:20.847Z"
+}

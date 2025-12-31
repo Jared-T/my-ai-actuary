@@ -1,0 +1,14 @@
+{
+  "id": "project-detail-view",
+  "category": "UI",
+  "title": "Project Detail & Management View",
+  "description": "Build detailed project view with settings, team members, workflows, and project-level configuration.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "project-dashboard"
+  ],
+  "createdAt": "2025-12-30T18:43:20.845Z",
+  "updatedAt": "2025-12-30T18:43:20.845Z"
+}

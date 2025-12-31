@@ -1,0 +1,15 @@
+{
+  "id": "international-compliance",
+  "category": "Core",
+  "title": "South African Regulatory Compliance",
+  "description": "Ensure system complies with South African actuarial standards, FSB requirements, and professional conduct rules.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "approval-workflow-system",
+    "audit-trail-system"
+  ],
+  "createdAt": "2025-12-30T18:43:20.851Z",
+  "updatedAt": "2025-12-30T18:43:20.851Z"
+}

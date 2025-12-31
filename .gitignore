@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
 
 # next.js
 /.next/
@@ -23,6 +25,9 @@
 # misc
 .DS_Store
 *.pem
+
+# pnpm store
+.pnpm-store/
 
 # debug
 npm-debug.log*

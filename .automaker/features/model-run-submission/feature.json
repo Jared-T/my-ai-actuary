@@ -1,0 +1,14 @@
+{
+  "id": "model-run-submission",
+  "category": "Core",
+  "title": "Model Run Submission System",
+  "description": "Build system for submitting actuarial model runs with parameter capture, version tracking, and execution monitoring.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "reserving-workflow"
+  ],
+  "createdAt": "2025-12-30T18:43:20.841Z",
+  "updatedAt": "2025-12-30T18:43:20.841Z"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "cors-setup",
+  "category": "API",
+  "title": "CORS Configuration",
+  "description": "Configure CORS middleware in FastAPI to allow secure communication between Next.js frontend and Python backend.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "backend-fastapi-setup"
+  ],
+  "createdAt": "2025-12-30T18:43:20.836Z",
+  "updatedAt": "2025-12-30T19:33:25.093Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T19:23:31.775Z"
+}

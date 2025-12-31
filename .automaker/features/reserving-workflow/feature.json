@@ -1,0 +1,15 @@
+{
+  "id": "reserving-workflow",
+  "category": "Workflow",
+  "title": "Monthly Reserving Close Workflow",
+  "description": "Implement core monthly reserving close workflow including data validation, model runs, analysis, and memo generation.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "complex",
+  "dependencies": [
+    "workflow-engine",
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.840Z",
+  "updatedAt": "2025-12-30T18:43:20.840Z"
+}

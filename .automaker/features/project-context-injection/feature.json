@@ -1,0 +1,17 @@
+{
+  "id": "project-context-injection",
+  "category": "Core",
+  "title": "Project Context Injection",
+  "description": "Implement system to inject active project context into agent sessions, ensuring all operations are scoped to the correct project.",
+  "status": "in_progress",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "project-management",
+    "session-persistence"
+  ],
+  "createdAt": "2025-12-30T18:43:20.838Z",
+  "updatedAt": "2025-12-31T09:44:22.240Z",
+  "branchName": "main",
+  "startedAt": "2025-12-31T09:44:21.978Z"
+}

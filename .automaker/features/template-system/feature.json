@@ -1,0 +1,14 @@
+{
+  "id": "template-system",
+  "category": "Core",
+  "title": "Document Template System",
+  "description": "Build template system for memos, reports, and disclosure packs with variable substitution and formatting.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "memo-draft-generation"
+  ],
+  "createdAt": "2025-12-30T18:43:20.841Z",
+  "updatedAt": "2025-12-30T18:43:20.841Z"
+}

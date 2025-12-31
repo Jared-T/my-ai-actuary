@@ -1,0 +1,14 @@
+{
+  "id": "bulk-data-import",
+  "category": "Core",
+  "title": "Bulk Data Import System",
+  "description": "Build system for importing data in bulk from CSV, Excel with validation, error handling, and reconciliation.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "data-quality-checks"
+  ],
+  "createdAt": "2025-12-30T18:43:20.850Z",
+  "updatedAt": "2025-12-30T18:43:20.850Z"
+}

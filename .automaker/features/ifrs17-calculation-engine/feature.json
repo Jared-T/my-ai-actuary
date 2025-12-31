@@ -1,0 +1,14 @@
+{
+  "id": "ifrs17-calculation-engine",
+  "category": "Core",
+  "title": "IFRS 17 Calculation Engine",
+  "description": "Build deterministic calculation engine for IFRS 17 metrics including CSM, PAA calculations, and insurance finance income.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "complex",
+  "dependencies": [
+    "ifrs17-data-extraction"
+  ],
+  "createdAt": "2025-12-30T18:43:20.842Z",
+  "updatedAt": "2025-12-30T18:43:20.842Z"
+}

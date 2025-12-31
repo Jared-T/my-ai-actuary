@@ -1,0 +1,15 @@
+{
+  "id": "ifrs17-workflow-tests",
+  "category": "Testing",
+  "title": "IFRS 17 Workflow Tests",
+  "description": "Create regression tests for IFRS 17 disclosure pack generation with various product types and scenarios.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "regression-testing-framework",
+    "ifrs17-workflow"
+  ],
+  "createdAt": "2025-12-30T18:43:20.849Z",
+  "updatedAt": "2025-12-30T18:43:20.849Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "settings-page",
+  "category": "UI",
+  "title": "User Settings Page",
+  "description": "Create settings page for user preferences, notification settings, and account management.",
+  "status": "verified",
+  "priority": 3,
+  "complexity": "simple",
+  "dependencies": [],
+  "createdAt": "2025-12-30T18:43:20.846Z",
+  "updatedAt": "2025-12-30T19:36:05.823Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T18:55:44.333Z"
+}

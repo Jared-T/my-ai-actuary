@@ -1,0 +1,15 @@
+{
+  "id": "milestone-tracking",
+  "category": "Core",
+  "title": "Milestone & Timeline Tracking",
+  "description": "Build milestone tracking system with target dates, actual completion dates, and critical path analysis for projects.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "task-generation",
+    "project-management"
+  ],
+  "createdAt": "2025-12-30T18:43:20.839Z",
+  "updatedAt": "2025-12-30T18:43:20.839Z"
+}

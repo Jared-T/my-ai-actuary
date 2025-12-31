@@ -1,0 +1,16 @@
+{
+  "id": "policy-guardrails",
+  "category": "Core",
+  "title": "Policy-Level Guardrails",
+  "description": "Implement first layer of governance with policy guardrails that enforce business rules and compliance requirements at the policy level.",
+  "status": "in_progress",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "agent-orchestrator"
+  ],
+  "createdAt": "2025-12-30T18:43:20.839Z",
+  "updatedAt": "2025-12-31T09:44:55.251Z",
+  "branchName": "main",
+  "startedAt": "2025-12-31T09:44:54.977Z"
+}

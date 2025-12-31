@@ -1,0 +1,14 @@
+{
+  "id": "workflow-ui",
+  "category": "UI",
+  "title": "Workflow Execution UI",
+  "description": "Create workflow execution interface showing current step, progress, inputs, and outputs with visualization.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "workflow-engine"
+  ],
+  "createdAt": "2025-12-30T18:43:20.845Z",
+  "updatedAt": "2025-12-30T18:43:20.845Z"
+}

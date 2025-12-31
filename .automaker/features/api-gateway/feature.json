@@ -1,0 +1,17 @@
+{
+  "id": "api-gateway",
+  "category": "API",
+  "title": "API Gateway & Routing",
+  "description": "Set up FastAPI API gateway with route organization, versioning, and proper HTTP status code handling. Organize endpoints by domain (chat, projects, workflows, etc).",
+  "status": "in_progress",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [
+    "backend-fastapi-setup",
+    "user-context-extraction"
+  ],
+  "createdAt": "2025-12-30T18:43:20.836Z",
+  "updatedAt": "2025-12-31T09:40:01.079Z",
+  "branchName": "main",
+  "startedAt": "2025-12-30T21:14:41.660Z"
+}

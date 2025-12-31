@@ -1,0 +1,14 @@
+{
+  "id": "data-explorer-ui",
+  "category": "UI",
+  "title": "Data Explorer Interface",
+  "description": "Build interactive data explorer for browsing actuarial data with filtering, sorting, and export capabilities.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "data-access-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.845Z",
+  "updatedAt": "2025-12-30T18:43:20.845Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "qa-checklist-system",
+  "category": "Core",
+  "title": "QA Checklist System",
+  "description": "Build configurable checklist system for QA reviewer with deterministic rules, validation functions, and reporting.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "moderate",
+  "dependencies": [
+    "qa-reviewer-agent"
+  ],
+  "createdAt": "2025-12-30T18:43:20.840Z",
+  "updatedAt": "2025-12-30T18:43:20.840Z"
+}

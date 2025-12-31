@@ -1,0 +1,15 @@
+{
+  "id": "qa-reviewer-agent",
+  "category": "Core",
+  "title": "QA Reviewer Agent",
+  "description": "Create QA reviewer agent that performs deterministic quality checks, validates against checklist requirements, and identifies issues.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "agent-orchestrator",
+    "work-product-guardrails"
+  ],
+  "createdAt": "2025-12-30T18:43:20.840Z",
+  "updatedAt": "2025-12-30T18:43:20.840Z"
+}
